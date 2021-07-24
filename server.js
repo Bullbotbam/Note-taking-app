@@ -5,6 +5,11 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const fs = require("fs");
 
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static('public'));
+// app.use('/', htmlRoutes);
 // don't forget to
 app.use("/api", apiRoutes);
 
@@ -12,7 +17,7 @@ app.use("/api", apiRoutes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/api/notes", (res, req) => {
+app.get("/notes", (res, req) => {
   return notes.html;
 });
 

@@ -6,6 +6,8 @@ const app = express();
 const fs = require("fs");
 
 const { notes } = require('./db/db.json')
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,7 +23,11 @@ app.use(express.json());
 app.get("/notes", (res, req) => {
   return notes.html;
 });
-
+app.get('/api/notes', (req, res) => {
+    let results = notes;
+    console.log(req.query)
+    res.json(results);
+  });
 // app.get("/", (res, req) => {
 //   return index.html;
 // });

@@ -23,12 +23,6 @@ first...
 npm init -y
 ```
 
-then...
-
-```
-npm install jest --save-dev
-```
-
 ## Purpose
 
 To create a program that will allow a person to keep track of important notes

@@ -1,23 +1,23 @@
-const router = require('express').Router();
-const apiRoutes = require('../routes/apiRoutes');
-const fs = require('fs');
+const router = require("express").Router();
+const apiRoutes = require("../routes/apiRoutes");
+const fs = require("fs");
 
 router.use(apiRoutes);
 
 // build the get route for api/notes response with notes in database
-router.get('/notes', (req, res) => {
-    let results = notes;
-    if (req.query) {
-      results = filterByQuery(req.query, results);
-    }
-    res.json(results);
-  });
+router.get("/notes", (req, res) => {
+  let results = notes;
+  if (req.query) {
+    results = filterByQuery(req.query, results);
+  }
+  res.json(results);
+});
 
 // router.post to add notes to database
 // Hey this is not complete to this code
-router.post('/vote', ({ body }, res) => {
+router.post("/vote", ({ body }, res) => {
   // Data validation
-  const errors = inputCheck(body, 'voter_id', 'candidate_id');
+  const errors = inputCheck(body, "voter_id", "candidate_id");
   if (errors) {
     res.status(400).json({ error: errors });
     return;
@@ -32,9 +32,9 @@ router.post('/vote', ({ body }, res) => {
       return;
     }
     res.json({
-      message: 'success',
+      message: "success",
       data: body,
-      changes: result.affectedRows
+      changes: result.affectedRows,
     });
   });
 });
@@ -42,7 +42,7 @@ router.post('/vote', ({ body }, res) => {
 // route to delete notes using router.delete
 //  this example will need to be corrected to meet this application
 // Delete a voter
-router.delete('/voter/:id', (req, res) => {
+router.delete("/api/notes/:id", (req, res) => {
   const sql = `DELETE FROM voters WHERE id = ?`;
 
   db.query(sql, req.params.id, (err, result) => {
@@ -50,25 +50,24 @@ router.delete('/voter/:id', (req, res) => {
       res.status(400).json({ error: res.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'Voter not found'
+        message: "Voter not found",
       });
     } else {
       res.json({
-        message: 'deleted',
+        message: "deleted",
         changes: result.affectedRows,
-        id: req.params.id
+        id: req.params.id,
       });
     }
   });
 });
 
-
 // according to project requirements there needs to be a write file funciton.  This is where i need to convert the syntax for this app
 
 // writing files
-const writeFile = fileContent => {
+const writeFile = (fileContent) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile('./dist/index.html', fileContent, err => {
+    fs.writeFile("./dist/index.html", fileContent, (err) => {
       if (err) {
         reject(err);
         return;
@@ -76,12 +75,10 @@ const writeFile = fileContent => {
 
       resolve({
         ok: true,
-        message: 'File created!'
+        message: "File created!",
       });
     });
   });
 };
-
-
 
 module.exports = router;

@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const animalRoutes = require('../routes/apiRoutes');
+const apiRoutes = require('../routes/apiRoutes');
+const fs = require('fs');
 
 router.use(apiRoutes);
 
-// build our get for api/notes respnd with notes in database
+// build the get route for api/notes response with notes in database
 router.get('/notes', (req, res) => {
     let results = notes;
     if (req.query) {
@@ -60,6 +61,27 @@ router.delete('/voter/:id', (req, res) => {
     }
   });
 });
+
+
+// according to project requirements there needs to be a write file funciton.  This is where i need to convert the syntax for this app
+
+// writing files
+const writeFile = fileContent => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('./dist/index.html', fileContent, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      resolve({
+        ok: true,
+        message: 'File created!'
+      });
+    });
+  });
+};
+
 
 
 module.exports = router;

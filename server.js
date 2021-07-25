@@ -2,28 +2,33 @@ const express = require("express");
 const path = require("path");
 const { uuid } = require("uuidv4");
 const PORT = process.env.PORT || 3001;
+
+const notes = require("./db/db.json");
+
 const app = express();
 const fs = require("fs");
 
 // don't forget to
-app.use("/api", apiRoutes);
+app.use(express.static("public"));
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/api/notes", (res, req) => {
-  return notes.html;
+  res.json(notes);
 });
 
-// app.get("/", (res, req) => {
-//   return index.html;
-// });
+app.get("/notes", (res, req) => {
+  res.sendFile(path.join(__dirname, "../public"));
+});
+
+app.get("/", (res, req) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});
 
 //create post route to allow for notes to be composed
 app.post("/api/notes", (req, res) => {
-  // req.body is where our incoming content will be
-  // set id based on what the next index of the array will be
   req.body.id = notes.length.toString();
   // if any data in req.body is incorrect, send 400 error back
   if (!validateNote(req.body)) {
@@ -35,6 +40,6 @@ app.post("/api/notes", (req, res) => {
   }
 });
 
-app.listening(PORT, () => {
+app.listen(PORT, () => {
   console.log(`API server now on ${PORT}!`);
 });

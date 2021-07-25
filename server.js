@@ -14,17 +14,22 @@ app.use(express.static("public"));
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+console.log(notes, "1notes");
 
-app.get("/api/notes", (res, req) => {
-  res.json(notes);
+app.get("/api/notes", (req, res) => {
+  return res.json(notes);
+});
+console.log(notes, "2notes");
+
+app.get("/api/notes", (req, res) => {
+  console.log(notes, "3notes");
+  res.send("this");
 });
 
-app.get("/notes", (res, req) => {
-  res.sendFile(path.join(__dirname, "../public"));
-});
-
-app.get("/", (res, req) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
+
+  console.log(notes, "4notes");
 });
 
 //create post route to allow for notes to be composed

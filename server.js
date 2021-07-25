@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 console.log(notes, "1notes");
 
-app.get("/api/notes", (req, res) => {
+app.get("/notes", (req, res) => {
   return res.json(notes);
 });
 console.log(notes, "2notes");

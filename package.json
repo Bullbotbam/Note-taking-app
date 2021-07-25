@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "inquire": "^0.4.8",
     "uuidv4": "^6.2.11"
   }
 }

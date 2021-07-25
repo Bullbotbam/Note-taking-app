@@ -1,25 +1,39 @@
-const router = require("express").Router();
-const apiRoutes = require("./noteRoutes");
-const fs = require("fs");
 
+const router = require('express').Router();
+// const { createNewNote, ValidateNote } = require('..');
+ const { notes }  = require('../db/db');
 
-router.use(apiRoutes);
+// router.use(apiRoutes);
 
 // build the get route for api/notes response with notes in database
-app.get("/api/notes", (req, res) => {
-  
-  res.json(notes);
+
+
+// we need get to /notes, we need a post to /notes, and we need a delete post to /notes/:id
+
+app.get("api/notes", (res, req) => {
+   return res.json(notes);
+});
+
+app.post('/api/notes', (req, res) => {
+  // set id based on what the next index of the array will be
+  req.body.id = notes.length.toString();
+
+  res.json(req.body);
 });
 
 // // router.post to add notes to database
 // // Hey this is not complete to this code
-// router.post("/vote", ({ body }, res) => {
-//   // Data validation
-//   const errors = inputCheck(body, "voter_id", "candidate_id");
-//   if (errors) {
-//     res.status(400).json({ error: errors });
-//     return;
+// app.post('/notes', (req, res) => {
+//   // set id based on what the next index of the array will be
+//   req.body.id = notes.length.toString();
+
+//   if (!ValidateNote(req.body)) {
+//     res.status(400).send('The note is not properly formatted.');
+//   } else {
+//     const animal = createNewNote(req.body, notes);
+//     res.json(notes);
 //   }
+// });
 
 //   const sql = `INSERT INTO votes (voter_id, candidate_id) VALUES (?,?)`;
 //   const params = [body.voter_id, body.candidate_id];
@@ -74,9 +88,7 @@ app.get("/api/notes", (req, res) => {
 //     });
 //   });
 // };
-// app.get("/notes", (res, req) => {
-//   return notes.html;
-// });
+
 // app.get('/api/notes', (req, res) => {
 //     let results = notes;
 //     console.log(req.query)

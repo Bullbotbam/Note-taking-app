@@ -55,14 +55,13 @@ app.post('/api/notes', (req, res) => {
 // //  this example will need to be corrected to meet this application
 // // Delete a voter
 // router.delete("/api/notes/:id", (req, res) => {
-//   const sql = `DELETE FROM voters WHERE id = ?`;
 
 //   db.query(sql, req.params.id, (err, result) => {
 //     if (err) {
 //       res.status(400).json({ error: res.message });
 //     } else if (!result.affectedRows) {
 //       res.json({
-//         message: "Voter not found",
+//         message: "Note not found",
 //       });
 //     } else {
 //       res.json({

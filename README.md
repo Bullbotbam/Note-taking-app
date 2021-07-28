@@ -15,17 +15,11 @@
   ## Description
    This is a program that allows someone to create, track and edit notes from a command line program run in Node.js.
   ## Installation
-   To use this app you must install [Node.js](https://nodejs.org/en/).  Once you have Node.js installed, then install Node Package Manager(npm).
-
-first...
-
-```
-npm init -y
-```
+   Developers looking to practice with this app you must install [Node.js](https://nodejs.org/en/).  Once you have Node.js installed, then install Node Package Manager(npm) and a few dependencies such as Express and Inquire
 
 ## Purpose
 
-To create a program that will allow a person to keep track of important notes
+To create a program that will allow a person to keep track of important notes and save them to their own database.
 
 ## License
 
@@ -43,6 +37,8 @@ None at this time
 
 ## Testing
 
+This app did not undergo any formal testing
+
 ## Links
 
-[The Team Profile program ~ Video Demo](https://youtu.be/OSGtYnhvZoc)
+[The Note Taking App ~ Video Demo](https://youtu.be/OSGtYnhvZoc)

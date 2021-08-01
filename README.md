@@ -41,6 +41,6 @@ This app did not undergo any formal testing
 
 ## Links
 
-[The Note Taking App ~ Video Demo](https://youtu.be/OSGtYnhvZoc)
-/br
-[This app is deployed on Heroku (click here to see app)](https://dashboard.heroku.com/apps/stark-castle-00977)
+- [The Note Taking App ~ Video Demo](https://youtu.be/OSGtYnhvZoc)
+
+- [This app is deployed on Heroku (click here to see app)](https://dashboard.heroku.com/apps/stark-castle-00977)
